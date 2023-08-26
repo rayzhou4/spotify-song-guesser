@@ -25,6 +25,8 @@ var generateRandomString = function (length) {
 
 var app = express();
 
+// app.use(express.static(path.join(__dirname, '../build')));
+
 app.get('/auth/login', (req, res) => {
 
   var scope = "streaming user-read-email user-read-private"
@@ -54,12 +56,12 @@ app.get('/auth/callback', (req, res) => {
     },
     headers: {
       'Authorization': 'Basic ' + (Buffer.from(spotify_client_id + ':' + spotify_client_secret).toString('base64')),
-      'Content-Type' : 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/x-www-form-urlencoded'
     },
     json: true
   };
 
-  request.post(authOptions, function(error, response, body) {
+  request.post(authOptions, function (error, response, body) {
     if (!error && response.statusCode === 200) {
       access_token = body.access_token;
       res.redirect('/')
@@ -69,8 +71,41 @@ app.get('/auth/callback', (req, res) => {
 })
 
 app.get('/auth/token', (req, res) => {
-  res.json({ access_token: access_token})
+  res.json({ access_token: access_token })
 })
+
+// app.get('/playlist/:playlistId/tracks', (req, res) => {
+//   var playlistId = req.params.playlistId
+
+//   var searchParameters = {
+//     method: 'GET',
+//     headers: {
+//       'Content-Type': 'application/json',
+//       'Authorization': `Bearer ${accessToken}`
+//     }
+//   }
+
+
+// })
+
+// async function getTracks(id, genre) {
+//     // Get request using search to get Album Tracks
+//     var searchParameters = {
+//         method: 'GET',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Authorization': `Bearer ${accessToken}`
+//         }
+//     }
+//     var returnedTracks = await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, searchParameters)
+//         .then(response => response.json())
+//         .then(data => {
+//             const jsonString = JSON.stringify(data);
+//             sessionStorage.setItem('tracks', jsonString);
+//             console.log('JSON data stored in session storage.');
+//         })
+//     setActive(genre);
+// }
 
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`)
