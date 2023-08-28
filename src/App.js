@@ -22,6 +22,10 @@ function App() {
   return (
     <>
       {(token === '') ? <Login /> : <Home />}
+      <p className='copyright'>
+        Made with Spotify API.
+        Made by <a href='https://github.com/rayzhou4' target='_blank'>Ray Zhou</a>, 2023.
+      </p>
     </>
   );
 }

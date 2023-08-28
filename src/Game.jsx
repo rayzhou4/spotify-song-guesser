@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import InputComponent from './components/InputComponent';
-import GameBarComponent from './components/GameBarComponent';
 
 const track = {
     name: "",
@@ -27,7 +26,7 @@ function WebPlayback(props) {
     const [is_active, setActive] = useState(false);
     const [btn_pressed, setBtn] = useState(false);
     const [current_track, setTrack] = useState(track);
-    const [show_image, setImage] = useState(false);
+    const [show_image, setImage] = useState(true);
     const [device_id, setId] = useState("");
 
     // Web Playback SDK object is created
@@ -41,7 +40,7 @@ function WebPlayback(props) {
         window.onSpotifyWebPlaybackSDKReady = () => {
 
             const player = new window.Spotify.Player({
-                name: 'SPOTIFY GAME',
+                name: 'SPOTIFYGUESSER.IO',
                 getOAuthToken: cb => { cb(access_token); },
                 volume: 0.5
             });
@@ -118,19 +117,15 @@ function WebPlayback(props) {
             .then(() => { console.log("Toggle Shuffle Playback to true.") })
     }
 
-    if (!is_active) {
+    if (is_active) {
         return (
             <>
-                <div className="container">
-                    <div className="main-wrapper">
-                        Instance not active. Open your spotify app, and select "Spotify Song Game" as the device you are listening on
-                        <button onClick={() => {
-
-                            player.removeListener('ready')
-                            player.disconnect()
-                            console.log("removed")
-                        }}>
-                            removeListener</button>
+                <div className='App-header'>
+                    <div className="container">
+                        <div style={{ width: '60%', textAlign: 'center' }}>
+                            You're almost there! Open your Spotify app, and connect to "SPOTIFYGUESSER.IO"
+                            as the device you are listening on.
+                        </div>
                     </div>
                 </div>
             </>
@@ -138,41 +133,39 @@ function WebPlayback(props) {
     } else if (!btn_pressed) {
         return (
             <>
-                <button onClick={() => {
-
-                    player.removeListener('ready')
-                    player.disconnect()
-                    console.log("removed")
-                }}>
-                    removeListener</button>
-                <button
-                    className="btn-spotify-small"
-                    onClick={() => {
-                        setBtn(!btn_pressed);
-                        startGame();
-                    }}
-                >
-                    Click Me to Start
-                </button>
+                <div className='App-header'>
+                    <button
+                        className="btn-spotify-small"
+                        onClick={() => {
+                            setBtn(!btn_pressed);
+                            startGame();
+                        }}
+                    >
+                        Click Me to Start!
+                    </button>
+                </div>
             </>
         )
 
     } else {
         return (
             <>
-                <div className="main-container">
-                    <button className="btn-spotify-small top-left" onClick={() => { setImage(!show_image) }}>
-                        {(!show_image) ? "Hide Cover" : "Show Cover"}
-                    </button>
-                    {console.log("BITCH")}
-                    <h4 className="top-center">Score: {gameInfo.score}/10 | Guesses: {gameInfo.guessCounter}/4</h4>
-                    <button className="btn-spotify-small top-right" onClick={() => { player.nextTrack() }}>Skip</button>
-                    <div className="main-wrapper">
+                <button className="btn-spotify-small top-left" onClick={() => { setImage(!show_image) }}>
+                    {(!show_image) ? "Hide Cover" : "Show Cover"}
+                </button>
+                <h4 className='top-center'>Score: {gameInfo.score}/10 | Guesses: {gameInfo.guessCounter}/4</h4>
+                <button className="btn-spotify-small top-right" onClick={() => { player.nextTrack() }}>Skip</button>
+                
+                <div className='App-header'>
+                    <div className="vertical-container">
+                        
                         {
-                            (!show_image) ? <img src={current_track.album.images[0].url} className="now-playing__cover" alt="" /> : <img />
+                            (!show_image) ? <img src={current_track.album.images[0].url} className="now-playing__cover" alt="" /> :
+                                <img src='spotifyguesser-logo-nobg.png' className='now-playing__cover' alt=' ' />
                         }
+                        <InputComponent gameInfo={gameInfo} player={player} name={current_track.name} />
                     </div>
-                    <InputComponent gameInfo={gameInfo} player={player} name={current_track.name} />
+
                 </div>
             </>
         )

@@ -44,22 +44,23 @@ function Home() {
     if (!active) {
         return (
             <>
-                <div className='Home'>
-                    <div className='main-container'>
-                        <div className='container'>
-                            <h2 style={{ width: 350, textAlign: 'center' }}>
-                                <Typewriter text="WELCOME TO SPOTIFY GUESSER GAME" delay={100} />
-                            </h2>
-                        </div>
-                        <div className='container'>
-                            <h4 style={{ textAlign: 'center' }}>
-                                You will be given TEN songs in the genre of your choice and for each song you will be given four tries to guess each song. Your total score will counted up in the end.
-                            </h4>
-                        </div>
-                        <div className='container'>
-                            <p>CHOOSE YOUR GENRE</p>
-                        </div>
-                        <div className='container'>
+                <div className='App-header'>
+                    <div className='vertical-container' style={{ paddingBottom: '50px' }}>
+                        <h2 className='game-title'>
+                            <Typewriter text="SPOTIFYGUESSER.IO" delay={100} />
+                        </h2>
+                    </div>
+                    <div className='vertical-container'>
+                        <h4 style={{ marginBottom: 0 }}>How to Play</h4>
+                        <h4 style={{ width: '60%', textAlign: 'center', paddingBottom: '50px' }}>
+                            You will be given TEN songs in the genre of your choice and for each song you 
+                            will be given four tries to guess the name of the song. Your total score will counted up
+                            in the end.
+                        </h4>
+                    </div>
+                    <div className='vertical-container'>
+                        <h4 style={{ marginBottom: '10px' }}>CHOOSE YOUR GENRE</h4>
+                        <div className='container' style={{ paddingBottom: '50px' }}>
                             <button
                                 className="btn-spotify"
                                 onClick={() => {
@@ -99,6 +100,7 @@ function Home() {
                         </div>
                     </div>
                 </div>
+
             </>
         )
     } else {
