@@ -74,39 +74,6 @@ app.get('/auth/token', (req, res) => {
   res.json({ access_token: access_token })
 })
 
-// app.get('/playlist/:playlistId/tracks', (req, res) => {
-//   var playlistId = req.params.playlistId
-
-//   var searchParameters = {
-//     method: 'GET',
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'Authorization': `Bearer ${accessToken}`
-//     }
-//   }
-
-
-// })
-
-// async function getTracks(id, genre) {
-//     // Get request using search to get Album Tracks
-//     var searchParameters = {
-//         method: 'GET',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'Authorization': `Bearer ${accessToken}`
-//         }
-//     }
-//     var returnedTracks = await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, searchParameters)
-//         .then(response => response.json())
-//         .then(data => {
-//             const jsonString = JSON.stringify(data);
-//             sessionStorage.setItem('tracks', jsonString);
-//             console.log('JSON data stored in session storage.');
-//         })
-//     setActive(genre);
-// }
-
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`)
 })

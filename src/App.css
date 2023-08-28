@@ -149,6 +149,19 @@ body {
   top: 10;
 }
 
+.top-center {
+  position: absolute;
+  top: 10;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.top-right {
+  position: absolute;
+  right: 0;
+  top: 10;
+}
+
 input {
   border: none;
   border-bottom: 3px solid #44c767;

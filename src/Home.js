@@ -32,7 +32,7 @@ function Home() {
             }
         }
 
-        var returnedTracks = await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, searchParameters)
+        var returnedTracks = await fetch(`https://api.spotify.com/v1/playlists/${id}`, searchParameters)
             .then(response => response.json())
             .then(data => {
                 const jsonString = JSON.stringify(data);
