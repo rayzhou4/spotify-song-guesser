@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
 function InputComponent(props) {
-    const songName = props.name;
-    const player = props.player;
+    const onSubmit = () => { props.onSubmit() };
     const gameInfo = props.gameInfo;
 
     // Declare a state variable to hold the input value
@@ -22,32 +21,20 @@ function InputComponent(props) {
 
     // Event handler function for the submit button
     const handleSubmit = () => {
-        if (userInput.toLowerCase().trim() == songName.toLowerCase().replace(/\(.*\)/g, '').trim()) {
-            player.nextTrack();
-            gameInfo.guessCounter = 0;
-            gameInfo.score++;
-        } else {
-            gameInfo.guessCounter++;
-        }
-
-        if (gameInfo.guessCounter == 4) {
-            player.nextTrack();
-            gameInfo.guessCounter = 0;
-        }
-
-        console.log("score", gameInfo);
-        console.log("counter", gameInfo.guessCounter);
+        gameInfo.userInput = userInput;
+        onSubmit();
+        setUserInput("");
     };
 
     return (
         <div className='container-input'>
             <input
-                style={{ borderRadius:'4px' }}
+                style={{ borderRadius: '4px' }}
                 type="text" value={userInput} placeholder='Enter Song Name'
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown}
             />
-            <button className="btn-spotify-small" onClick={handleSubmit}>Enter</button>
+            <button onClick={handleSubmit} className="btn-spotify-small" >Enter</button>
         </div>
     );
 }

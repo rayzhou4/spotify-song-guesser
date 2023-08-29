@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import InputComponent from './components/InputComponent';
+import Typewriter from './components/Typewriter';
 
 const track = {
     name: "",
@@ -15,7 +16,9 @@ const track = {
 
 const gameInfo = {
     score: 0,
-    guessCounter: 0
+    guessCounter: 0,
+    songCounter: 0,
+    userInput: ""
 }
 
 function WebPlayback(props) {
@@ -28,6 +31,10 @@ function WebPlayback(props) {
     const [current_track, setTrack] = useState(track);
     const [show_image, setImage] = useState(true);
     const [device_id, setId] = useState("");
+    const [guessCounter, setGuessCounter] = useState(0);
+    const [songCounter, setSongCounter] = useState(0);
+    const [score, setScore] = useState(0);
+
 
     // Web Playback SDK object is created
     useEffect(() => {
@@ -117,7 +124,30 @@ function WebPlayback(props) {
             .then(() => { console.log("Toggle Shuffle Playback to true.") })
     }
 
-    if (is_active) {
+    const onSubmit = () => {
+        if (gameInfo.userInput.toLowerCase().trim() == current_track.name.toLowerCase().replace(/\(.*\)/g, '').trim()) {
+            player.nextTrack();
+            gameInfo.songCounter++;
+            gameInfo.guessCounter = 0;
+            gameInfo.score++;
+        } else {
+            gameInfo.guessCounter++;
+        }
+
+        if (gameInfo.guessCounter == 4) {
+            player.nextTrack();
+            gameInfo.songCounter++;
+            gameInfo.guessCounter = 0;
+        }
+
+        setSongCounter(gameInfo.songCounter);
+        setGuessCounter(gameInfo.guessCounter); // set # of guesses to count using useState
+        setScore(gameInfo.score);
+
+        console.log("gameinfo", gameInfo);
+    }
+
+    if (!is_active) {
         return (
             <>
                 <div className='App-header'>
@@ -131,6 +161,7 @@ function WebPlayback(props) {
             </>
         );
     } else if (!btn_pressed) {
+        player.pause(); // prevents spotify from playing before game starts
         return (
             <>
                 <div className='App-header'>
@@ -147,25 +178,42 @@ function WebPlayback(props) {
             </>
         )
 
-    } else {
+    } else if (songCounter < 10) {
         return (
             <>
                 <button className="btn-spotify-small top-left" onClick={() => { setImage(!show_image) }}>
                     {(!show_image) ? "Hide Cover" : "Show Cover"}
                 </button>
-                <h4 className='top-center'>Score: {gameInfo.score}/10 | Guesses: {gameInfo.guessCounter}/4</h4>
-                <button className="btn-spotify-small top-right" onClick={() => { player.nextTrack() }}>Skip</button>
-                
+                <h4 className='top-center'>Score: {score}/10 | Guesses: {guessCounter}/4</h4>
+                <button
+                    className="btn-spotify-small top-right"
+                    onClick={() => {
+                        player.nextTrack();
+                        gameInfo.songCounter++;
+                        setSongCounter(gameInfo.songCounter);
+                    }}>
+                    Skip
+                </button>
+
                 <div className='App-header'>
                     <div className="vertical-container">
-                        
                         {
                             (!show_image) ? <img src={current_track.album.images[0].url} className="now-playing__cover" alt="" /> :
                                 <img src='spotifyguesser-logo-nobg.png' className='now-playing__cover' alt=' ' />
                         }
-                        <InputComponent gameInfo={gameInfo} player={player} name={current_track.name} />
+                        <InputComponent onSubmit={onSubmit} gameInfo={gameInfo} />
                     </div>
-
+                </div>
+            </>
+        )
+    } else {
+        player.pause();
+        return (
+            <>
+                <div className='App-header'>
+                    <h2 className='hover-text' style={{ width: '80%', textAlign: 'center' }}>
+                        <Typewriter text={"Congratulations! Your final score is " + score + "!"} delay={100} />
+                    </h2>
                 </div>
             </>
         )
