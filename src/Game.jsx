@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import InputComponent from './components/InputComponent';
 import Typewriter from './components/Typewriter';
+import spotifyCover from './images/spotifyguesser-logo-nobg.png';
 
 const track = {
     name: "",
@@ -199,7 +200,7 @@ function WebPlayback(props) {
                     <div className="vertical-container">
                         {
                             (!show_image) ? <img src={current_track.album.images[0].url} className="now-playing__cover" alt="" /> :
-                                <img src='spotifyguesser-logo-nobg.png' className='now-playing__cover' alt=' ' />
+                                <img src={spotifyCover} className='now-playing__cover' alt=' ' />
                         }
                         <InputComponent onSubmit={onSubmit} gameInfo={gameInfo} />
                     </div>
