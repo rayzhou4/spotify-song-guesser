@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/spotifyguesser.io/static/css/main.33a246c3.css",
-    "main.js": "/spotifyguesser.io/static/js/main.aacb1d81.js",
+    "main.js": "/spotifyguesser.io/static/js/main.6845f205.js",
     "static/js/787.ea6f2ec3.chunk.js": "/spotifyguesser.io/static/js/787.ea6f2ec3.chunk.js",
     "static/media/spotifyguesser-logo-nobg.png": "/spotifyguesser.io/static/media/spotifyguesser-logo-nobg.7ed07f27b89221347f94.png",
     "index.html": "/spotifyguesser.io/index.html",
     "main.33a246c3.css.map": "/spotifyguesser.io/static/css/main.33a246c3.css.map",
-    "main.aacb1d81.js.map": "/spotifyguesser.io/static/js/main.aacb1d81.js.map",
+    "main.6845f205.js.map": "/spotifyguesser.io/static/js/main.6845f205.js.map",
     "787.ea6f2ec3.chunk.js.map": "/spotifyguesser.io/static/js/787.ea6f2ec3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.33a246c3.css",
-    "static/js/main.aacb1d81.js"
+    "static/js/main.6845f205.js"
   ]
 }
