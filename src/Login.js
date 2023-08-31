@@ -5,7 +5,7 @@ function Login() {
     return (
         <div className="App">
             <header className="App-header">
-                <a className="btn-spotify" href="/auth/login">
+                <a className="btn-spotify" href="spotifyguesser.io/auth/login">
                     Click Me!
                 </a>
             </header>
