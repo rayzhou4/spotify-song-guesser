@@ -1,6 +1,7 @@
 const express = require('express')
 const request = require('request');
 const dotenv = require('dotenv');
+const path = require('path');
 
 const port = 5000
 
@@ -75,3 +76,5 @@ app.get('/auth/token', (req, res) => {
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`)
 })
+
+app.use(express.static(path.join(__dirname, '../build')));
