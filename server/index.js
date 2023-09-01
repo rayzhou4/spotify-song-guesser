@@ -1,7 +1,6 @@
 const express = require('express')
 const request = require('request');
 const dotenv = require('dotenv');
-const path = require('path');
 
 const port = 5000
 
@@ -25,8 +24,6 @@ var generateRandomString = function (length) {
 };
 
 var app = express();
-
-app.use(express.static(path.join(__dirname, '../build')));
 
 app.get('/auth/login', (req, res) => {
   var scope = "streaming user-read-email user-read-private"
