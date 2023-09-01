@@ -26,8 +26,9 @@ var generateRandomString = function (length) {
 
 var app = express();
 
-app.get('/auth/login', (req, res) => {
+app.use(express.static(path.join(__dirname, '../build')));
 
+app.get('/auth/login', (req, res) => {
   var scope = "streaming user-read-email user-read-private"
   var state = generateRandomString(16);
 
@@ -43,7 +44,6 @@ app.get('/auth/login', (req, res) => {
 })
 
 app.get('/auth/callback', (req, res) => {
-
   var code = req.query.code;
 
   var authOptions = {
@@ -76,5 +76,3 @@ app.get('/auth/token', (req, res) => {
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`)
 })
-
-// app.use(express.static(path.join(__dirname, '../build')));
