@@ -1,3 +1,4 @@
+![logo](src\images\spotifyguesser-logo-nobg.png)
 # spotifyguesser.io
 
 The purpose of this project is to practice React.js and API fetching using Spotify's API.
@@ -16,7 +17,9 @@ The goal of the game is to guess the given songs, and the more songs you are abl
 - Then, clone the repository by entering the following into your terminal:
 <blockquote>
 
-git clone https://github.com/rayzhou4/spotifyguesser.io.git</blockquote>
+git clone https://github.com/rayzhou4/spotifyguesser.io.git
+</blockquote>
+
 - Afterwards, install the required packages by entering:
 <blockquote>
 
