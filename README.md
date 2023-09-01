@@ -1,4 +1,4 @@
-![logo](src\images\spotifyguesser-logo-nobg.png)
+![logo](src/images/spotifyguesser-logo-nobg.png)
 # spotifyguesser.io
 
 The purpose of this project is to practice React.js and API fetching using Spotify's API.
@@ -15,12 +15,15 @@ The goal of the game is to guess the given songs, and the more songs you are abl
 ### To try the game yourself, you need to...
 - Firstly, open your favourite code editor (I used Visual Studio Code)
 - Then, clone the repository by entering the following into your terminal:
+
 <blockquote>
 
-git clone https://github.com/rayzhou4/spotifyguesser.io.git
+`git clone https://github.com/rayzhou4/spotifyguesser.io.git`
+
 </blockquote>
 
 - Afterwards, install the required packages by entering:
+
 <blockquote>
 
     npm install
@@ -38,4 +41,9 @@ git clone https://github.com/rayzhou4/spotifyguesser.io.git
 </blockquote>
 
 - Finally, you can run the application by entering:
-<blockquote>npm run dev</blockquote>
+
+<blockquote>
+
+`npm run dev`
+
+</blockquote>
