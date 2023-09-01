@@ -14,13 +14,25 @@ The goal of the game is to guess the given songs, and the more songs you are abl
 ### To try the game yourself, you need to...
 - Firstly, open your favourite code editor (I used Visual Studio Code)
 - Then, clone the repository by entering the following into your terminal:
-`git clone https://github.com/rayzhou4/spotifyguesser.io.git`
+<blockquote>
+
+git clone https://github.com/rayzhou4/spotifyguesser.io.git</blockquote>
 - Afterwards, install the required packages by entering:
-`npm install`
-`npm install npm-run-all --save-dev`
-`npm install dotenv --save-dev`
-`npm install express --save-dev`
-`npm install request --save-dev`
-`npm install http-proxy-middleware --save-dev`
+<blockquote>
+
+    npm install
+
+    npm install npm-run-all --save-dev
+
+    npm install dotenv --save-dev
+
+    npm install express --save-dev
+
+    npm install request --save-dev
+
+    npm install http-proxy-middleware --save-dev
+
+</blockquote>
+
 - Finally, you can run the application by entering:
-`npm run dev`
+<blockquote>npm run dev</blockquote>
