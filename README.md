@@ -1,8 +1,8 @@
 # spotifyguesser.io
 
-The purpose of this project is to practice React.js and API fetching.
+The purpose of this project is to practice React.js and API fetching using Spotify's API.
 
-This application was made with Spotify's API.
+The goal of the game is to guess the given songs, and the more songs you are able to guess, the higher score you will receive.
 
 ### Familiarized myself with:
 - React.js Hooks (State/Effect)
