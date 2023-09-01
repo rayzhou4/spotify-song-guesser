@@ -18,7 +18,7 @@ The goal of the game is to guess the given songs, and the more songs you are abl
 
 <blockquote>
 
-`git clone https://github.com/rayzhou4/spotifyguesser.io.git`
+    git clone https://github.com/rayzhou4/spotifyguesser.io.git
 
 </blockquote>
 
@@ -44,6 +44,6 @@ The goal of the game is to guess the given songs, and the more songs you are abl
 
 <blockquote>
 
-`npm run dev`
+    npm run dev
 
 </blockquote>
