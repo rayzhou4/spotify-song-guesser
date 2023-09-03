@@ -47,3 +47,10 @@ The goal of the game is to guess the given songs, and the more songs you are abl
     npm run dev
 
 </blockquote>
+
+### Potential Updates:
+- Deployment as a website
+- Multiplayer feature
+- Settings to change certain features like how many guesses you get, volume, difficulty, etc
+- More genre/playlist choices (plus custom playlist?)
+- More engaging website design

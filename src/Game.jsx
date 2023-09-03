@@ -191,7 +191,9 @@ function WebPlayback(props) {
                     onClick={() => {
                         player.nextTrack();
                         gameInfo.songCounter++;
+                        gameInfo.guessCounter = 0;                        
                         setSongCounter(gameInfo.songCounter);
+                        setGuessCounter(gameInfo.guessCounter);
                     }}>
                     Skip
                 </button>
