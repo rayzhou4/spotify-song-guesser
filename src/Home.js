@@ -9,17 +9,10 @@ import './App.css';
 
 function Home() {
     const [active, setActive] = useState(false);
-    const [timeLeft, setTimeLeft] = useState(1100);
     const accessToken = useSelector(selectToken);  
 
     useEffect(() => {
-        // const intervalId = setInterval(() => {
-        //     setTimeLeft(timeLeft - 1);
-        //   }, 1000);
-          
-      
         console.log(accessToken);
-        // return () => clearInterval(intervalId);
     });
 
     async function getTracks(id) {
