@@ -5,7 +5,7 @@ import './App.css';
 
 
 function Home() {
-    const [access_token, setToken] = useState("");
+    const [token, setToken] = useState("");
     const [active, setActive] = useState(false);
 
     // var spotify_client_id = process.env.SPOTIFY_CLIENT_ID
@@ -18,7 +18,7 @@ function Home() {
             const json = await response.json();
             setToken(json.access_token);
         }
-
+        console.log("token:", token)
         getToken();
     });
 
@@ -28,7 +28,7 @@ function Home() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${access_token}`
+                'Authorization': `Bearer ${token}`
             }
         }
 
@@ -105,7 +105,7 @@ function Home() {
         )
     } else {
         return (
-            <><Game token={access_token} /></>
+            <><Game token={token} /></>
         )
     }
 }
