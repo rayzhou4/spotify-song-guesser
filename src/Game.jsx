@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import InputComponent from './components/InputComponent';
 import Typewriter from './components/Typewriter';
 import spotifyCover from './images/spotifyguesser-logo-nobg.png';
+import { useSelector } from 'react-redux';
+import { selectToken } from './slices/token';
 
 const track = {
     name: "",
@@ -22,9 +24,8 @@ const gameInfo = {
     userInput: ""
 }
 
-function WebPlayback(props) {
-
-    const access_token = props.token;
+function WebPlayback() {
+    const accessToken = useSelector(selectToken);
     const [player, setPlayer] = useState(undefined);
     const [is_paused, setPaused] = useState(false);
     const [is_active, setActive] = useState(false);
@@ -49,7 +50,7 @@ function WebPlayback(props) {
 
             const player = new window.Spotify.Player({
                 name: 'SPOTIFYGUESSER.IO',
-                getOAuthToken: cb => { cb(access_token); },
+                getOAuthToken: cb => { cb(accessToken); },
                 volume: 0.5
             });
 
@@ -106,7 +107,7 @@ function WebPlayback(props) {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${access_token}`,
+                "Authorization": `Bearer ${accessToken}`,
             },
             body: JSON.stringify(requestBody)
         }
@@ -117,7 +118,7 @@ function WebPlayback(props) {
         var options = {
             method: "PUT",
             headers: {
-                "Authorization": `Bearer ${access_token}`
+                "Authorization": `Bearer ${accessToken}`
             }
         }
 
@@ -211,6 +212,7 @@ function WebPlayback(props) {
         )
     } else {
         player.pause();
+        player.disconnect();
         return (
             <>
                 <div className='App-header'>

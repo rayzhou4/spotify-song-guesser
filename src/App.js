@@ -1,24 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import Login from './Login'
 import Home from './Home'
-import { getTokenFromResponse } from './Auth';
+import { SPOTIFY_REDIRECT_URI, getTokenFromResponse } from './Auth';
 import './App.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAccessToken, selectToken } from './slices/token';
 
 function App() {
-
-  const [token, setToken] = useState("");
+  const accessToken = useSelector(selectToken);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getToken = async () => {
       const access_token = await getTokenFromResponse();
-      setToken(access_token);
+      await dispatch(setAccessToken(String(access_token) || ""))
     }
-    if (window.location.href.split("?")[0] == "http://localhost:3000/callback") getToken();
-  });
+    
+    if (window.location.href.split("?")[0] === SPOTIFY_REDIRECT_URI && !accessToken) {
+      getToken();
+    }
+  }, []);
 
   return (
     <>
-      {(token === '') ? <Login /> : <Home />}
+      {(accessToken == '') ? <Login /> : <Home />}
       {/* {<Home />} */}
       <p className='copyright'>
         Made with Spotify API.

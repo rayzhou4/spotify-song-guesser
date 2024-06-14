@@ -51,14 +51,15 @@ const getTokenFromResponse = async () => {
     }
     
     const result = await response.json();
-    return result.access_token;   
+    return result.access_token;       
 
   } catch (error) {
     console.error('Error exchanging code for token:', error);
   }
 }
 
-module.exports = {
+export {
+  SPOTIFY_REDIRECT_URI,
   LOGIN_URL,
   getTokenFromResponse,
 }

@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import Typewriter from './components/Typewriter';
 import Game from './Game';
+import { useSelector } from 'react-redux';
+import { selectToken } from './slices/token';
 import './App.css';
 
 
-function Home() {
-    const [token, setToken] = useState("");
-    const [active, setActive] = useState(false);
 
-    // var spotify_client_id = process.env.SPOTIFY_CLIENT_ID
-    // var spotify_client_secret = process.env.SPOTIFY_CLIENT_SECRET
+function Home() {
+    const [active, setActive] = useState(false);
+    const [timeLeft, setTimeLeft] = useState(1100);
+    const accessToken = useSelector(selectToken);  
 
     useEffect(() => {
-
-        async function getToken() {
-            const response = await fetch('/auth/token');
-            const json = await response.json();
-            setToken(json.access_token);
-        }
-        console.log("token:", token)
-        getToken();
+        // const intervalId = setInterval(() => {
+        //     setTimeLeft(timeLeft - 1);
+        //   }, 1000);
+          
+      
+        console.log(accessToken);
+        // return () => clearInterval(intervalId);
     });
 
     async function getTracks(id) {
@@ -28,7 +28,7 @@ function Home() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${accessToken}`
             }
         }
 
@@ -105,7 +105,7 @@ function Home() {
         )
     } else {
         return (
-            <><Game token={token} /></>
+            <><Game /></>
         )
     }
 }
