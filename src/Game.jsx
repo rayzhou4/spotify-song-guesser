@@ -156,7 +156,7 @@ function WebPlayback() {
                     <div className="container">
                         <div style={{ width: '60%', textAlign: 'center' }}>
                             You're almost there! Open your Spotify app, and connect to "SPOTIFYGUESSER.IO"
-                            as the device you are listening on.
+                            as the device you are listening on. (You will need Spotify Premium)
                         </div>
                     </div>
                 </div>

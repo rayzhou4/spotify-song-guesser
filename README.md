@@ -12,7 +12,15 @@ The goal of the game is to guess the given songs, and the more songs you are abl
 
 (React.js, JavaScript, HTML, CSS)
 
-### To try the game yourself, you need to...
+### To try the game yourself, you can either...
+- play on deployed app or,
+- play locally
+- **NOTE**: you need to be on a **desktop** and have **Spotify Premium** to play 
+
+#### Playing Online
+- Click [here](https://spotifyguesser-io.vercel.app/)
+
+#### Playing Locally
 - Firstly, open your favourite code editor (I used Visual Studio Code)
 - Then, clone the repository by entering the following into your terminal:
 
@@ -49,7 +57,7 @@ The goal of the game is to guess the given songs, and the more songs you are abl
 </blockquote>
 
 ### Potential Updates:
-- Deployment as a website
+- ~~Deployment as a website~~
 - Multiplayer feature
 - Settings to change certain features like how many guesses you get, volume, difficulty, etc
 - More genre/playlist choices (plus custom playlist?)
